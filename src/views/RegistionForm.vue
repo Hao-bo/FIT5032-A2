@@ -1,6 +1,17 @@
 <template>
   <div class="container mt-5">
     <div class="row">
+      <!-- display introduce -->
+      <div class="container mt-5 pt-5">
+        <section class="intro p-4 bg-light rounded">
+          <h2>Introduction</h2>
+          <p>
+            Welcome to Australian elder help. We are dedicated to providing support and services for
+            the elderly in Australia. Whether you are looking to volunteer, need assistance, or want
+            to participate in our activities, Please Login and we are here to help.
+          </p>
+        </section>
+      </div>
       <div class="col-md-8 offset-md-2">
         <h1>Login and Registration</h1>
         <form @submit.prevent="register">
@@ -223,9 +234,9 @@ const login = () => {
   )
 
   if (user) {
-    alert('Login successful!') // 登录成功提示
+    alert('Login successful!')
   } else {
-    alert('Login failed: Incorrect username, password, phone number, or volunteer status') // 登录失败提示
+    alert('Login failed: Incorrect username, password, phone number, or volunteer status')
   }
 }
 const validateName = (blur) => {

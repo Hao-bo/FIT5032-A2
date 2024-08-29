@@ -1,18 +1,31 @@
 <script setup>
 // import HomePage from './components/HomePage.vue'
-import RegistionForm from './components/RegistionForm.vue'
-import HomePage from './components/HomePage.vue'
+// import RegistionForm from './views/RegistionForm.vue'
+// import HomePage from './views/HomePage.vue'
+import RegistionForm from './views/RegistionForm.vue'
+import NavBar from './components/NavBar.vue'
+import { RouterView, RouterLink } from 'vue-router'
 </script>
 
 <template>
   <!-- <Header />
   <Homepage /> -->
-  <HomePage />
-  <RegistionForm />
+  <!-- <div class="navigate"> -->
+  <header style="height: 11vh">
+    <NavBar />
+  </header>
+  <!-- </div> -->
+
+  <div class="main-content">
+    <!-- <RegistionForm /> -->
+    <RouterView></RouterView>
+  </div>
+  <!-- <HomePage /> -->
+  <!-- <RegistionForm /> -->
 </template>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
 }
 
@@ -37,5 +50,5 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
-}
+} */
 </style>
