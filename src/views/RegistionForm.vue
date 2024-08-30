@@ -106,7 +106,7 @@
             </div>
           </div>
 
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label for="reason" class="form-label">Reason for Joining</label>
             <textarea
               class="form-control"
@@ -116,7 +116,7 @@
               @input="() => validateReason(false)"
               v-model="formData.reason"
             ></textarea>
-          </div>
+          </div> -->
 
           <div class="text-center">
             <button type="button" class="btn btn-primary me-2" @click="login">Login</button>
@@ -182,8 +182,8 @@ const formData = ref({
   email: '',
   phone: '',
   isVolunteer: false,
-  gender: '',
-  reason: ''
+  gender: ''
+  //reason: ''
 })
 
 const errors = ref({
@@ -202,8 +202,8 @@ const clearForm = () => {
     email: '',
     phone: '',
     isVolunteer: false,
-    gender: '',
-    reason: ''
+    gender: ''
+    //reason: ''
   }
 }
 
@@ -234,11 +234,6 @@ const register = () => {
   submittedCards.value = existingData // Dynamically update data
   clearForm()
 }
-
-// // Login to another page
-// const login = () => {
-//   // Logic here
-// }
 
 const login = () => {
   const existingData = JSON.parse(localStorage.getItem('submittedCards')) || []
