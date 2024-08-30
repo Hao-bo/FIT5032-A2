@@ -18,6 +18,10 @@
             <!-- <button class="btn btn-link nav-link">Activity</button> -->
             <RouterLink to="/activity" class="btn btn-link nav-link">Activity</RouterLink>
           </li>
+          <li class="nav-item">
+            <!-- <button class="btn btn-link nav-link">Activity</button> -->
+            <RouterLink to="/rate" class="btn btn-link nav-link">Rate</RouterLink>
+          </li>
         </ul>
       </nav>
       <!-- <button class="btn btn-danger">Login</button> -->

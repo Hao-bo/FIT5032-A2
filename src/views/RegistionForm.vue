@@ -17,7 +17,7 @@
         <form @submit.prevent="register">
           <div class="row mb-3">
             <div class="col-md-6">
-              <label for="username" class="form-label">Username</label>
+              <label for="username" class="form-label">Username(Required)</label>
               <input
                 type="text"
                 class="form-control"
@@ -29,7 +29,7 @@
               <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
             </div>
             <div class="col-md-6">
-              <label for="password" class="form-label">Password</label>
+              <label for="password" class="form-label">Password(Required)</label>
               <input
                 type="password"
                 class="form-control"
@@ -44,7 +44,7 @@
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <label for="age" class="form-label">Age</label>
+              <label for="age" class="form-label">Age(Required)</label>
               <input
                 type="number"
                 class="form-control"
@@ -56,7 +56,7 @@
               <div v-if="errors.age" class="text-danger">{{ errors.age }}</div>
             </div>
             <div class="col-md-6">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label">Email(Required)</label>
               <input
                 type="email"
                 class="form-control"
@@ -71,7 +71,7 @@
 
           <div class="row mb-3">
             <div class="col-md-6">
-              <label for="phone" class="form-label">Phone Number</label>
+              <label for="phone" class="form-label">Phone Number(Required)</label>
               <input
                 type="tel"
                 class="form-control"
@@ -166,9 +166,14 @@
 </template>
 
 <script setup>
+// import router from '@/router'
 import { ref, onMounted } from 'vue'
+// import router from '@/router'
+import { useRouter } from 'vue-router'
 // import DataTable from 'primevue/datatable'
 // import Column from 'primevue/column'
+
+const router = useRouter()
 
 const formData = ref({
   username: '',
@@ -210,6 +215,18 @@ onMounted(() => {
 })
 
 const register = () => {
+  // Check if all fields are valid
+  validateName(true)
+  validatePassword(true)
+  validateAge(true)
+  validateEmail(true)
+  validatePhone(true)
+
+  // If there are any errors, do not proceed
+  if (Object.values(errors.value).some((error) => error)) {
+    return
+  }
+
   // Local Storage
   const existingData = JSON.parse(localStorage.getItem('submittedCards')) || []
   existingData.push({ ...formData.value })
@@ -235,11 +252,27 @@ const login = () => {
 
   if (user) {
     alert('Login successful!')
+    localStorage.setItem('loggedInUser', JSON.stringify(user))
+    if (user.isVolunteer) {
+      router.push('/volunteer')
+    }
   } else {
     alert('Login failed: Incorrect username, password, phone number, or volunteer status')
   }
 }
+
+const validateNull = (field, fieldName) => {
+  if (!formData.value[field]) {
+    errors.value[field] = `${fieldName} is required.`
+    return false
+  }
+  return true
+}
+
 const validateName = (blur) => {
+  if (!validateNull('username', 'Username')) {
+    return
+  }
   if (formData.value.username.length < 3) {
     if (blur) errors.value.username = 'Name must be at least 3 characters'
   } else {
@@ -248,6 +281,9 @@ const validateName = (blur) => {
 }
 
 const validatePassword = (blur) => {
+  if (!validateNull('password', 'Password')) {
+    return
+  }
   const password = formData.value.password
   const minLength = 8
   const hasUppercase = /[A-Z]/.test(password)
@@ -270,6 +306,9 @@ const validatePassword = (blur) => {
 }
 
 const validateAge = (blur) => {
+  if (!validateNull('age', 'Age')) {
+    return
+  }
   const age = formData.value.age
   const isVolunteer = formData.value.isVolunteer
 
@@ -283,6 +322,9 @@ const validateAge = (blur) => {
 }
 
 const validatePhone = (blur) => {
+  if (!validateNull('phone', 'Phone number')) {
+    return
+  }
   const phonePattern = /^\d{10}$/
   if (!phonePattern.test(formData.value.phone)) {
     if (blur) errors.value.phone = 'Phone number must be exactly 10 digits'
@@ -292,6 +334,9 @@ const validatePhone = (blur) => {
 }
 
 const validateEmail = (blur) => {
+  if (!validateNull('email', 'Email')) {
+    return
+  }
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
   if (!emailPattern.test(formData.value.email)) {
     if (blur) errors.value.email = 'Invalid email format'
