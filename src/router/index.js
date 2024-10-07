@@ -6,6 +6,9 @@ import VolunteerView from '@/views/VolunteerView.vue'
 import HomePage from '@/views/HomePage.vue'
 import RegistionForm from '@/views/RegistionForm.vue'
 import RatePage from '@/views/RatePage.vue'
+import FirebaseSignin from '@/views/FirebaseSignin.vue'
+import FirebaseRegistion from '@/views/FirebaseRegistion.vue'
+import Logout from '@/views/Logout.vue'
 
 const routes = [
   {
@@ -43,9 +46,19 @@ const routes = [
     component: AcitivityView
   },
   {
-    path: '/registion',
-    name: 'Registion',
-    component: RegistionForm
+    path: '/fireLogin',
+    name: 'FireLogin',
+    component: FirebaseSignin
+  },
+  {
+    path: '/fireRegister',
+    name: 'FireRegister',
+    component: FirebaseRegistion
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    component: Logout
   }
 ]
 

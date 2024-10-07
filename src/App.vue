@@ -4,7 +4,7 @@
 // import HomePage from './views/HomePage.vue'
 import RegistionForm from './views/RegistionForm.vue'
 import NavBar from './components/NavBar.vue'
-import { RouterView, RouterLink } from 'vue-router'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>

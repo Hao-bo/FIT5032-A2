@@ -13,8 +13,10 @@
   "dependencies": {
     "@primevue/themes": "^4.0.5",
     "bootstrap": "^5.3.3",
+    "firebase": "^10.14.0",
+    "papaparse": "^5.4.1",
     "primeicons": "^7.0.0",
-    "primevue": "^4.0.5",
+    "primevue": "^4.0.7",
     "vue": "^3.4.29",
     "vue-router": "^4.4.3"
   },

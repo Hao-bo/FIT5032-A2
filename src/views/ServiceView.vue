@@ -1,5 +1,3 @@
 <template>
-  <div class="Service">
-    <h1>Service Page</h1>
-  </div>
+  <h1>Service</h1>
 </template>

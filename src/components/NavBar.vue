@@ -22,12 +22,24 @@
             <!-- <button class="btn btn-link nav-link">Activity</button> -->
             <RouterLink to="/rate" class="btn btn-link nav-link">Rate</RouterLink>
           </li>
+          <!-- registion Page -->
+          <li>
+            <RouterLink to="fireRegister" class="nav-link" active-class="active"
+              >Firebase Registion</RouterLink
+            >
+          </li>
+          <!-- log in Page -->
+          <li>
+            <RouterLink to="/fireLogin" class="nav-link" active-class="active"
+              >Firebase login</RouterLink
+            >
+          </li>
         </ul>
       </nav>
       <!-- <button class="btn btn-danger">Login</button> -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <RouterLink to="/registion" class="btn btn-danger">Login</RouterLink>
-      </li>
+      </li> -->
     </div>
   </header>
 </template>

@@ -280,7 +280,7 @@ const validatePassword = (blur) => {
     return
   }
   const password = formData.value.password
-  const minLength = 8
+  const minLength = 3
   const hasUppercase = /[A-Z]/.test(password)
   const hasLowercase = /[a-z]/.test(password)
   const hasNumber = /\d/.test(password)
