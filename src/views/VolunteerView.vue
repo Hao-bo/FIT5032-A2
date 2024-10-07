@@ -32,7 +32,6 @@
         </div>
       </template>
 
-      <!-- 表格列定义 -->
       <Column field="ID" header="ID" style="width: 10%" sortable exportHeader="ID">
         <template #filter="{ filterModel, filterCallback }">
           <InputText
