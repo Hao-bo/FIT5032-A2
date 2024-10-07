@@ -32,7 +32,6 @@
         </div>
       </template>
 
-      <!-- 表格列定义及单列搜索功能 -->
       <Column field="ID" header="ID" style="width: 10%" sortable></Column>
 
       <Column
