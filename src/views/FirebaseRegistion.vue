@@ -32,22 +32,30 @@ const register = () => {
   createUserWithEmailAndPassword(auth, email.value, password.value)
     .then((data) => {
       console.log('Firebase Register Successful!')
-      // 注册成功后，获取用户 ID
       const userId = data.user.uid
-      // 将用户的详细信息存储到 Firestore 数据库
-      setDoc(doc(db, 'users', userId), {
-        username: username.value,
-        email: email.value,
-        age: age.value,
-        phone: phone.value,
-        isVolunteer: isVolunteer.value
+
+      // 调用云函数保存用户信息
+      fetch('https://saveuserinfo-345mlhejoa-uc.a.run.app', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userId,
+          username: username.value,
+          email: email.value,
+          age: age.value,
+          phone: phone.value,
+          isVolunteer: isVolunteer.value
+        })
       })
-        .then(() => {
-          console.log('User data saved to Firestore!')
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('User data saved through cloud function:', data)
           router.push('/fireLogin')
         })
         .catch((error) => {
-          console.log('Error saving user data: ', error)
+          console.log('Error saving user data through cloud function:', error)
         })
     })
     .catch((error) => {
