@@ -1,5 +1,5 @@
 <template>
-  <header class="container-fluid p-3 border-bottom fixed-top">
+  <header class="navbar container-fluid p-3 border-bottom fixed-top">
     <div class="d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">
         <span class="fw-bold">Australian elder help</span>
@@ -44,7 +44,7 @@
   </header>
 </template>
 
-<style scoped>
+<!-- <style scoped>
 header {
   background-color: skyblue;
 }
@@ -53,5 +53,21 @@ header {
   .container-padding {
     padding-top: 70px;
   }
+}
+</style> -->
+<style scoped>
+.navbar {
+  background-color: skyblue;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+}
+
+/* 适配不同屏幕尺寸的导航栏样式 */
+.navbar .nav-link {
+  color: #0056b3;
+  font-weight: bold;
+}
+
+.navbar .nav-link:hover {
+  text-decoration: underline;
 }
 </style>
