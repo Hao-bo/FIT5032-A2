@@ -34,6 +34,11 @@
               >Firebase login</RouterLink
             >
           </li>
+          <li>
+            <RouterLink to="/sendEmail" class="nav-link" active-class="active"
+              >Send Email</RouterLink
+            >
+          </li>
         </ul>
       </nav>
       <!-- <button class="btn btn-danger">Login</button> -->

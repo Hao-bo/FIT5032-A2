@@ -9,7 +9,7 @@
     Is volunteer?
     <input type="checkbox" v-model="isVolunteer" />
   </p>
-  <p><button @click="register">Save to Firebase</button></p>
+  <p><button @click="register">Register</button></p>
 </template>
 
 <script setup>
