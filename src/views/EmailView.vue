@@ -56,38 +56,39 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
-  data() {
-    return {
-      email: {
-        to: '',
-        subject: '',
-        text: ''
-      }
-    }
-  },
-  methods: {
-    // 发送邮件
-    async sendEmail() {
+  setup() {
+    const email = ref({
+      to: '',
+      subject: '',
+      text: ''
+    })
+
+    const sendEmail = async () => {
       try {
-        // 直接发送 email 对象作为请求体
-        const response = await fetch('https://sendemail-345mlhejoa-uc.a.run.app', {
-          method: 'POST',
+        const response = await fetch('https://sendemail-345mlhejoa-uc.a.run.app/sendEmail', {
+          method: 'POST', //          https://sendemail-345mlhejoa-uc.a.run.app
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(this.email),
-          mode: 'cors' // 启用 CORS 模式
+          body: JSON.stringify(email.value)
         })
 
         if (response.ok) {
-          alert('邮件发送成功')
+          alert('send successful')
         } else {
-          alert(`发送失败: ${response.statusText}`)
+          alert(`send default: ${response.statusText}`)
         }
       } catch (error) {
         alert(`Error: ${error.message}`)
       }
+    }
+
+    return {
+      email,
+      sendEmail
     }
   }
 }
